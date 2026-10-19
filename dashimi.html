@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Dasara, Nagashree Akka! | Vijayadashami Wishes</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-purple: #1f082e;
+            --secondary-purple: #340c4d;
+            --royal-red: #6e0d25;
+            --saffron: #ff8c00;
+            --bright-saffron: #ffa500;
+            --gold-light: #fff2a3;
+            --gold-main: #ffd700;
+            --gold-dark: #b8860b;
+            --text-light: #fef9e7;
+            --text-subtle: #eedcb3;
+            --card-bg: rgba(35, 10, 52, 0.72);
+            --border-gold: linear-gradient(135deg, #ffd700, #ff8c00, #fffae0, #b8860b);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at 50% 20%, #3d0d5a 0%, #20042d 50%, #11001a 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Canvas for Particle & Fireworks effects */
+        #fx-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Decorative Indian Toran / Garland at top */
+        .toran-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 48px;
+            overflow: hidden;
+            z-index: 5;
+            display: flex;
+            justify-content: space-around;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+
+        .mango-leaf {
+            width: 28px;
+            height: 45px;
+            background: linear-gradient(135deg, #1b5e20, #4caf50);
+            border-radius: 0% 100% 50% 100% / 0% 100% 50% 100%;
+            transform: rotate(45deg);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+            margin: -10px 4px 0 4px;
+            position: relative;
+        }
+
+        .marigold-flower {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: radial-gradient(circle, #ffe600 20%, #ff6f00 90%);
+            border-radius: 50%;
+            top: 26px;
+            left: 6px;
+            box-shadow: 0 2px 6px rgba(255, 140, 0, 0.6);
+        }
+
+        /* Main Wrapper */
+        .page-wrapper {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Subtitle Banner */
+        .festival-badge {
+            display: inline-block;
+            background: linear-gradient(90deg, rgba(255,140,0,0.2), rgba(255,215,0,0.35), rgba(255,140,0,0.2));
+            border: 1px solid rgba(255, 215, 0, 0.6);
+            color: var(--gold-light);
+            font-size: 0.95rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            padding: 8px 24px;
+            border-radius: 50px;
+            margin-top: 15px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+            text-align: center;
+        }
+
+        /* Hero Headings */
+        .shree-symbol {
+            font-size: 2.2rem;
+            color: var(--bright-saffron);
+            text-shadow: 0 0 15px rgba(255, 140, 0, 0.8);
+            margin-bottom: 4px;
+            animation: pulseGlow 3s infinite alternate ease-in-out;
+        }
+
+        .main-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2rem, 6vw, 3.4rem);
+            font-weight: 900;
+            text-align: center;
+            background: linear-gradient(135deg, #fff3a8 15%, #ffd700 45%, #ff8c00 85%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 25px rgba(255, 215, 0, 0.3);
+            margin-bottom: 8px;
+            line-height: 1.25;
+            letter-spacing: 1px;
+        }
+
+        .sister-name-highlight {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.8rem, 8vw, 4.4rem);
+            font-weight: normal;
+            display: block;
+            background: linear-gradient(135deg, #ffffff, #ffe57f, #ffa000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.5));
+            margin-top: 2px;
+        }
+
+        .tagline {
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            color: var(--text-subtle);
+            text-align: center;
+            max-width: 650px;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        /* Pure CSS Art: Festive Dussehra Showcase */
+        .art-stage {
+            width: 100%;
+            max-width: 440px;
+            margin: 10px auto 30px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px 10px;
+        }
+
+        .rangoli-aura {
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            border: 2px dashed rgba(255, 215, 0, 0.35);
+            animation: rotateAura 28s linear infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .rangoli-aura::before {
+            content: '';
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 2px dotted rgba(255, 140, 0, 0.4);
+            animation: rotateAuraRev 20s linear infinite;
+        }
+
+        /* Divine CSS Diya */
+        .diya-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 3;
+        }
+
+        .flame-glow {
+            position: absolute;
+            top: -55px;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8) 0%, rgba(255, 69, 0, 0.4) 50%, rgba(0,0,0,0) 80%);
+            border-radius: 50%;
+            animation: flameFlicker 1.8s ease-in-out infinite alternate;
+        }
+
+        .flame {
+            width: 26px;
+            height: 48px;
+            background: linear-gradient(to bottom, #ffffff 0%, #ffff33 25%, #ff9900 65%, #cc0000 100%);
+            border-radius: 50% 50% 35% 35% / 80% 80% 20% 20%;
+            box-shadow: 0 0 20px #ffcc00, 0 0 35px #ff6600, 0 0 50px rgba(255, 30, 0, 0.7);
+            margin-bottom: -6px;
+            animation: flameMove 2s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+        }
+
+        .diya-body {
+            width: 140px;
+            height: 52px;
+            background: linear-gradient(180deg, #d35400, #8e2800 60%, #4a1200 100%);
+            border-radius: 0 0 120px 120px;
+            border: 3px solid #ffcc33;
+            box-shadow: inset 0 4px 10px rgba(255, 235, 150, 0.5), 0 10px 25px rgba(0, 0, 0, 0.7);
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+	.diya-rim {
+            position: absolute;
+            top: -7px;
+            width: 146px;
+            height: 14px;
+            background: linear-gradient(90deg, #b8860b, #ffd700, #ff8c00, #ffd700, #b8860b);
+            border-radius: 50%;
+            border: 1px solid #ffe680;
+        }
+
+        .diya-base {
+            width: 70px;
+            height: 14px;
+            background: linear-gradient(90deg, #7b1e00, #d35400, #7b1e00);
+            border-radius: 0 0 20px 20px;
+            border: 2px solid #ffaa00;
+            margin-top: -1px;
+        }
+
+        /* Decorative Lotus Petals under Diya */
+        .lotus-bed {
+            position: absolute;
+            bottom: 12px;
+            width: 220px;
+            height: 40px;
+            display: flex;
+            justify-content: space-around;
+            z-index: 2;
+        }
+
+        .petal {
+            width: 32px;
+            height: 38px;
+            background: linear-gradient(135deg, #ff4081, #c2185b);
+            border-radius: 100% 0% 100% 0% / 100% 0% 100% 0%;
+            transform: rotate(-45deg);
+            opacity: 0.85;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+
+        .petal:nth-child(even) {
+            transform: rotate(45deg);
+            border-radius: 0% 100% 0% 100% / 0% 100% 0% 100%;
+        }
+
+        /* Card Container */
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 35px 30px;
+            width: 100%;
+            border: 1px solid rgba(255, 215, 0, 0.35);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.65), inset 0 0 20px rgba(255, 215, 0, 0.08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            margin-bottom: 28px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), inset 0 0 25px rgba(255, 215, 0, 0.12);
+        }
+
+        .card-corner-decor {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border-color: var(--gold-main);
+            pointer-events: none;
+            opacity: 0.6;
+        }
+        .top-left { top: 10px; left: 10px; border-top: 2px solid; border-left: 2px solid; }
+        .top-right { top: 10px; right: 10px; border-top: 2px solid; border-right: 2px solid; }
+        .bottom-left { bottom: 10px; left: 10px; border-bottom: 2px solid; border-left: 2px solid; }
+        .bottom-right { bottom: 10px; right: 10px; border-bottom: 2px solid; border-right: 2px solid; }
+
+        /* Heartfelt Message Section */
+        .message-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--gold-main);
+            text-align: center;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .message-title span {
+            color: var(--saffron);
+        }
+
+        .message-text {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            text-align: justify;
+            margin-bottom: 18px;
+            font-weight: 300;
+        }
+
+        .blessings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .blessing-pill {
+            background: rgba(255, 215, 0, 0.08);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            border-radius: 12px;
+            padding: 12px 14px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .blessing-pill:hover {
+            background: rgba(255, 215, 0, 0.18);
+            border-color: var(--gold-main);
+            transform: scale(1.03);
+        }
+
+        .blessing-icon {
+            font-size: 1.6rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .blessing-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gold-light);
+        }
+
+        /* Buttons Grid */
+        .action-cluster {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            width: 100%;
+            margin: 10px 0 30px;
+        }
+
+        .festive-btn {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.98rem;
+            font-weight: 600;
+            padding: 14px 26px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #ffe066, #ffb300 50%, #e65100);
+            color: #260500;
+            border: 1px solid #fff2a3;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.5);
+            background: linear-gradient(135deg, #fff2a3, #ffc107 50%, #f57c00);
+        }
+
+        .btn-sparkle {
+            background: linear-gradient(135deg, #7b1fa2, #4a148c);
+            color: #ffffff;
+            border: 1px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .btn-sparkle:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(123, 31, 162, 0.6);
+            background: linear-gradient(135deg, #8e24aa, #6a1b9a);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: #ffffff;
+            border: 1px solid #a3f7bf;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+            background: linear-gradient(135deg, #30e374, #1aa392);
+        }
+
+        /* Surprise Modal Card (Hidden by default) */
+        .surprise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(14, 2, 22, 0.88);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .surprise-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .surprise-modal {
+            background: radial-gradient(circle at 50% 10%, #460f64, #210332 90%);
+            border: 2px solid var(--gold-main);
+            border-radius: 25px;
+            max-width: 550px;
+            width: 100%;
+            padding: 35px 25px;
+            position: relative;
+            transform: scale(0.7) translateY(40px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(255, 215, 0, 0.35);
+            text-align: center;
+        }
+
+        .surprise-overlay.show .surprise-modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 14px;
+            right: 18px;
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+            transition: transform 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            transform: rotate(90deg);
+            color: #ffffff;
+        }
+
+        .surprise-header {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--gold-main);
+            margin-bottom: 12px;
+        }
+
+        .surprise-body {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #fff9e6;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        /* Closing Greeting */
+        .closing-banner {
+            background: linear-gradient(135deg, rgba(110, 13, 37, 0.6), rgba(52, 12, 77, 0.8));
+            border: 1.5px solid var(--gold-main);
+            border-radius: 20px;
+            padding: 24px 25px;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            margin-top: 5px;
+        }
+
+        .closing-quote {
+            font-size: 1.15rem;
+            color: #fff7d6;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .akka-title {
+            color: var(--gold-main);
+            font-weight: 700;
+            font-size: 1.25rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        footer {
+            margin-top: 35px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(254, 249, 231, 0.6);
+            letter-spacing: 1px;
+        }
+
+        /* Animations */
+        @keyframes flameFlicker {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            100% { transform: scale(1.15); opacity: 1; }
+        }
+	/* Animations */
+        @keyframes flameFlicker {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            100% { transform: scale(1.15); opacity: 1; }
+        }
+
+        @keyframes flameMove {
+            0% { transform: rotate(-2deg) skewX(-2deg); }
+            50% { transform: rotate(2deg) skewX(2deg); }
+            100% { transform: rotate(-1deg) skewX(0deg); }
+        }
+
+        @keyframes rotateAura {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes rotateAuraRev {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 140, 0, 0.5)); }
+            100% { transform: scale(1.08); filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.9)); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            .page-wrapper {
+                padding: 40px 14px 30px;
+            }
+            .content-card {
+                padding: 26px 18px;
+            }
+            .message-text {
+                font-size: 0.98rem;
+                text-align: left;
+            }
+            .festive-btn {
+                width: 100%;
+                font-size: 0.95rem;
+                padding: 13px 20px;
+            }
+            .blessings-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Decorative Leaf Toran -->
+    <div class="toran-container" id="toran"></div>
+
+    <!-- Canvas for Floating Marigolds, Golden Dust, and Fireworks -->
+    <canvas id="fx-canvas"></canvas>
+
+    <div class="page-wrapper">
+        <div class="festival-badge">✦ Shubha Vijayadashami ✦</div>
+        <div class="shree-symbol">ॐ</div>
+
+        <!-- 
+            CUSTOMIZATION SECTION:
+            You can modify your Sister's name here
+        -->
+        <h1 class="main-title">
+            Happy Dasara, 
+            <span class="sister-name-highlight"> Nagashree Akka!</span>
+        </h1>
+
+        <p class="tagline">
+            May this Vijayadashami illuminate your path with divine triumphs, wisdom, eternal peace, and sheer joy.
+        </p>
+
+        <!-- CSS Art: Traditional Glowing Diya and Lotus Base -->
+        <div class="art-stage">
+            <div class="rangoli-aura"></div>
+            <div class="diya-wrapper">
+                <div class="flame-glow"></div>
+                <div class="flame"></div>
+                <div class="diya-body">
+                    <div class="diya-rim"></div>
+                </div>
+                <div class="diya-base"></div>
+            </div>
+            <div class="lotus-bed">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+            </div>
+        </div>
+
+        <!-- Heartfelt Message Card -->
+        <div class="content-card">
+            <div class="card-corner-decor top-left"></div>
+            <div class="card-corner-decor top-right"></div>
+            <div class="card-corner-decor bottom-left"></div>
+            <div class="card-corner-decor bottom-right"></div>
+
+            <h2 class="message-title">
+                <span>✦</span> A Heartfelt Dasara Wish For You <span>✦</span>
+            </h2>
+
+            <!-- 
+                CUSTOMIZATION SECTION:
+                You can personalize the emotional greeting message here
+            -->
+            <p class="message-text">
+                Dearest <strong>Nagashree Akka</strong>, on this glorious and auspicious festival of Vijayadashami, I celebrate not only the victory of light over darkness and good over evil, but also the boundless joy and warmth you bring into my world every single day.
+            </p>
+            <p class="message-text">
+                May Goddess Durga bestow upon you the courage to conquer every obstacle, boundless inspiration to fulfill your biggest dreams, and serene peace in your heart. May your journey ahead be blessed with thriving success, radiant health, unmatched prosperity, and genuine smiles.
+            </p>
+
+            <div class="blessings-grid">
+                <div class="blessing-pill">
+                    <span class="blessing-icon">✨</span>
+                    <span class="blessing-name">Grand Success</span>
+                </div>
+                <div class="blessing-pill">
+                    <span class="blessing-icon">🌸</span>
+                    <span class="blessing-name">Vibrant Health</span>
+                </div>
+                <div class="blessing-pill">
+                    <span class="blessing-icon">💰</span>
+                    <span class="blessing-name">Prosperity</span>
+                </div>
+                <div class="blessing-pill">
+                    <span class="blessing-icon">🪔</span>
+                    <span class="blessing-name">Infinite Peace</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Buttons Cluster -->
+        <div class="action-cluster">
+            <button class="festive-btn btn-gold" id="surpriseBtn">
+                🎁 Click for a Special Surprise
+            </button>
+
+            <button class="festive-btn btn-sparkle" id="sparkleBtn">
+                ✨ Celebrate with Sparkles
+            </button>
+
+            <a href="#" class="festive-btn btn-whatsapp" id="whatsappBtn" target="_blank" rel="noopener noreferrer">
+                💬 Send to WhatsApp
+            </a>
+        </div>
+
+        <!-- Closing Sentiment Card -->
+        <div class="closing-banner">
+            <p class="closing-quote">
+                “You are not just my sister, you are a precious blessing in my life.<br>
+                Happy Dasara, <span class="akka-title">Nagashree Akka! ❤️</span>”
+            </p>
+        </div>
+
+        <footer>
+            Crafted with infinite love, respect & prayers • Happy Vijayadashami
+        </footer>
+    </div>
+
+    <!-- Surprise Modal Dialog -->
+    <div class="surprise-overlay" id="surpriseModal">
+        <div class="surprise-modal">
+            <button class="modal-close-btn" id="closeModalBtn" aria-label="Close Surprise">&times;</button>
+            <h3 class="surprise-header">To My Wonderful Sister...</h3>
+            <p class="surprise-body">
+                "Having you as my sister is like having a constant star guiding me through life. In every high and low, your kindness and smile brighten my path. On this Vijayadashami, my one heartfelt prayer is that you are always surrounded by laughter, treasured moments, and triumphs that make you proud. Keep shining bright!"
+            </p>
+            <button class="festive-btn btn-gold" id="innerCelebrateBtn">
+                🌟 Shower Joy & Sparkles!
+            </button>
+        </div>
+    </div>
+
+    <!-- JavaScript for Animations, Interactivity, and Effects -->
+    <script>
+        /*
+         * ========================================================
+         * 1. CONFIGURATION & URL MANAGEMENT
+         * ========================================================
+         */
+        // Replace this with your actual hosted website URL once published online
+        // If left as window.location.href, it automatically uses current page link
+        const HOSTED_WEBSITE_URL = window.location.href; 
+        
+        // Sister's name for WhatsApp message
+        const SISTER_NAME = "Nagashree Akka";
+        
+        // Setup WhatsApp Share Link
+        const prewrittenMessage = `Dearest ${SISTER_NAME}, wishing you a joyful and blessed Happy Dasara (Vijayadashami)! 🪔✨ May your life be filled with success, prosperity, and happiness. Here is a special festive greeting crafted just for you: ${HOSTED_WEBSITE_URL}`;
+        const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(prewrittenMessage)}`;
+        document.getElementById('whatsappBtn').setAttribute('href', whatsappUrl);
+
+        /*
+         * ========================================================
+         * 2. GENERATE TOP MARIGOLD & MANGO LEAF TORAN
+         * ========================================================
+         */
+        const toran = document.getElementById('toran');
+        const leafCount = Math.ceil(window.innerWidth / 36) + 2;
+        for (let i = 0; i < leafCount; i++) {
+            const leaf = document.createElement('div');
+            leaf.className = 'mango-leaf';
+            if (i % 2 === 0) {
+                const flower = document.createElement('div');
+                flower.className = 'marigold-flower';
+                leaf.appendChild(flower);
+            }
+            toran.appendChild(leaf);
+        }
+
+        /*
+         * ========================================================
+         * 3. FESTIVE CANVAS: PARTICLES, FLOWERS & FIREWORKS
+         * ========================================================
+         */
+        const canvas = document.getElementById('fx-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        });
+
+        // Floating ambient elements (golden sparkles & marigold petals)
+        const ambientParticles = [];
+        const maxAmbient = 45;
+
+        class AmbientParticle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height + height * 0.1;
+                this.size = Math.random() * 4 + 2;
+                this.speedY = -(Math.random() * 0.8 + 0.3);
+                this.speedX = Math.sin(Math.random() * 4) * 0.5;
+                this.opacity = Math.random() * 0.7 + 0.3;
+                this.isPetal = Math.random() > 0.65;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = (Math.random() - 0.5) * 2;
+                this.color = this.isPetal 
+                    ? ['#ffa000', '#ff6f00', '#ffc107', '#ff3d00'][Math.floor(Math.random() * 4)]
+                    : ['#ffe082', '#ffd54f', '#ffffff'][Math.floor(Math.random() * 3)];
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.02) * 0.3;
+                this.rotation += this.rotSpeed;
+
+                if (this.y < -20 || this.x < -20 || this.x > width + 20) {
+                    this.reset();
+                    this.y = height + 10;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.globalAlpha = this.opacity;
+
+                if (this.isPetal) {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size * 1.5, this.size, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    // Golden glowing dust
+                    ctx.fillStyle = this.color;
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = '#ffd700';
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size * 0.8, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < maxAmbient; i++) {
+            ambientParticles.push(new AmbientParticle());
+        }
+
+        // Active Fireworks Sparkles System
+        const fireworks = [];
+
+        class FireworkParticle {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 6 + 2;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed;
+                this.gravity = 0.08;
+                this.friction = 0.96;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.025 + 0.015;
+                this.size = Math.random() * 3 + 1.5;
+            }
+
+            update() {
+                this.vx *= this.friction;
+                this.vy *= this.friction;
+                this.vy += this.gravity;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.alpha -= this.decay;
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.alpha);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 12;
+                ctx.shadowColor = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        function triggerFirework(originX, originY) {
+            const colors = ['#ffd700', '#ff9100', '#ff1744', '#f50057', '#00e676', '#ffffff', '#ffeb3b'];
+            const burstColor = colors[Math.floor(Math.random() * colors.length)];
+            const particleCount = 45;
+            for (let i = 0; i < particleCount; i++) {
+                fireworks.push(new FireworkParticle(originX, originY, burstColor));
+            }
+        }
+
+        // Animation Loop
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            // Render Ambient
+            ambientParticles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            // Render Fireworks
+            for (let i = fireworks.length - 1; i >= 0; i--) {
+                const fp = fireworks[i];
+                fp.update();
+                fp.draw();
+                if (fp.alpha <= 0) {
+                    fireworks.splice(i, 1);
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Subtle random background fireworks
+        setInterval(() => {
+            if (Math.random() > 0.4) {
+                const randomX = Math.random() * (width * 0.8) + (width * 0.1);
+                const randomY = Math.random() * (height * 0.45) + 60;
+                triggerFirework(randomX, randomY);
+            }
+        }, 2200);
+
+        /*
+         * ========================================================
+         * 4. INTERACTION & MODAL LOGIC
+         * ========================================================
+         */
+        const surpriseBtn = document.getElementById('surpriseBtn');
+        const sparkleBtn = document.getElementById('sparkleBtn');
+        const surpriseModal = document.getElementById('surpriseModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const innerCelebrateBtn = document.getElementById('innerCelebrateBtn');
+
+        // Sparkle Burst Trigger
+        function triggerSparkleBurst() {
+            for (let i = 0; i < 4; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * (width * 0.7) + (width * 0.15);
+                    const y = Math.random() * (height * 0.5) + (height * 0.1);
+                    triggerFirework(x, y);
+                }, i * 160);
+            }
+        }
+
+        sparkleBtn.addEventListener('click', (e) => {
+            triggerSparkleBurst();
+        });
+
+        // Surprise Modal Open / Close
+        surpriseBtn.addEventListener('click', () => {
+            surpriseModal.classList.add('show');
+            triggerSparkleBurst();
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            surpriseModal.classList.remove('show');
+        });
+
+        surpriseModal.addEventListener('click', (e) => {
+            if (e.target === surpriseModal) {
+                surpriseModal.classList.remove('show');
+            }
+        });
+
+        innerCelebrateBtn.addEventListener('click', () => {
+            triggerSparkleBurst();
+        });
+    </script>
+</body>
+</html>
